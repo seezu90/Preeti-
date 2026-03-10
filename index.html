@@ -1,185 +1,329 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Countdown 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body {
-            margin: 0; padding: 0;
-            background-color: #ffeef2;
-            font-family: 'Poppins', sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Countdown 💖</title>
 
-        /* Container for Cards */
-        .perspective-container {
-            perspective: 1000px;
-            width: 90%; max-width: 400px; height: 450px;
-            position: relative;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-        .card {
-            position: absolute; width: 100%; height: 100%;
-            background: white; border-radius: 25px;
-            padding: 30px; text-align: center;
-            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
-            display: none; /* Initially hidden */
-            flex-direction: column; justify-content: center; align-items: center;
-            backface-visibility: hidden;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<style>
 
-        .active-card { display: flex; animation: flipIn 0.8s forwards; }
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
 
-        @keyframes flipIn {
-            from { transform: rotateY(-180deg); opacity: 0; }
-            to { transform: rotateY(0deg); opacity: 1; }
-        }
+body{
+margin:0;
+background:#ffeef2;
+font-family:'Poppins',sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
 
-        h1 { font-family: 'Pacifico', cursive; color: #d63384; font-size: 2rem; }
-        p { color: #555; font-size: 1.1rem; line-height: 1.6; }
+/* container */
 
-        .btn {
-            background: #ff4d8d; color: white; border: none;
-            padding: 12px 30px; border-radius: 25px;
-            font-weight: 600; cursor: pointer; margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
-        }
+.perspective-container{
+width:90%;
+max-width:400px;
+height:540px;
+position:relative;
+}
 
-        .btn:active { transform: scale(0.95); }
+/* card */
 
-        /* Countdown Style */
-        #timer {
-            font-size: 1.5rem; font-weight: 600; color: #d63384;
-            margin: 20px 0; letter-spacing: 1px;
-        }
+.card{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+border-radius:25px;
+padding:20px;
+text-align:center;
+box-shadow:0 15px 35px rgba(214,51,132,0.2);
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fade .6s;
+}
 
-        input {
-            padding: 10px; border-radius: 10px; border: 1px solid #ddd;
-            width: 80%; margin-top: 15px; text-align: center;
-        }
+.active-card{
+display:flex;
+}
 
-        /* Typewriter Cursor */
-        #typeText::after { content: "|"; animation: blink 0.7s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+@keyframes fade{
+from{opacity:0; transform:scale(.9);}
+to{opacity:1; transform:scale(1);}
+}
 
-    </style>
+h1{
+font-family:'Pacifico',cursive;
+color:#d63384;
+margin-bottom:10px;
+}
+
+/* photo rectangle */
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* typing */
+
+.typeText::after{
+content:"|";
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+p{
+font-size:1rem;
+color:#555;
+}
+
+/* button */
+
+.btn{
+background:#ff4d8d;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:25px;
+font-weight:600;
+cursor:pointer;
+margin-top:20px;
+}
+
+.btn:active{
+transform:scale(.95);
+}
+
+/* timer */
+
+.timer{
+font-size:1.4rem;
+font-weight:700;
+color:#ff2e7a;
+background:#fff0f6;
+padding:15px;
+border-radius:20px;
+margin-top:15px;
+}
+
+/* input */
+
+input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ddd;
+width:80%;
+margin-top:15px;
+text-align:center;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="perspective-container">
-        
-        <div class="card active-card" id="card1">
-            <h1>Hey Preeti madam! ✨</h1>
-            <p>I have something very special for you that is waiting....</p>
-            <button class="btn" onclick="nextCard(2)">Are you ready? ✨</button>
-        </div>
+<div class="perspective-container">
 
-        <div class="card" id="card2">
-            <h1>Just a Question...</h1>
-            <p id="typeText"></p>
-            <button class="btn" id="nextBtn2" style="display: none;" onclick="nextCard(3)">Yes, I am! 💖</button>
-        </div>
+<!-- Card 1 -->
 
-        <div class="card" id="card3">
-            <h1>Special Moment</h1>
-            <p>Every second spent with you is a blessing. Ready for the surprise?</p>
-            <button class="btn" style="background: #d63384;" onclick="nextCard(4)">Click for Surprise 🎁</button>
-        </div>
+<div class="card active-card" id="card1">
 
-        <div class="card" id="card4">
-            <h1>Your Day Starts In...</h1>
-            <div id="timer">Loading...</div>
-            
-            <p style="font-size: 0.9rem;">Wait for the clock to strike 12!</p>
-            <hr style="width: 80%; opacity: 0.2;">
-            
-            <input type="password" id="passInput" placeholder="Enter Secret Code">
-            <button class="btn" style="padding: 8px 20px; font-size: 0.8rem;" onclick="checkPassword()">Unlock Now 🔑</button>
-        </div>
+<img src="photo1.jpg">
 
-    </div>
+<h1>Hey Preeti ✨</h1>
 
-    <script>
-        // Password set karein yaha
-        const SECRET_PASS = "billa"; 
+<p class="typeText" id="text1"></p>
 
-        function nextCard(cardNumber) {
-            // Hide current card
-            document.querySelector('.active-card').classList.remove('active-card');
-            
-            // Show next card
-            const next = document.getElementById('card' + cardNumber);
-            next.style.display = 'flex';
-            setTimeout(() => next.classList.add('active-card'), 10);
+<button class="btn" onclick="nextCard(2)">Next 💖</button>
 
-            // If Card 2, start typing
-            if (cardNumber === 2) {
-                startTyping("Do you know how much you mean to me? And are you excited for your big day?");
-            }
+</div>
 
-            // If Card 4, start Countdown
-            if (cardNumber === 4) {
-                startCountdown();
-            }
-        }
+<!-- Card 2 -->
 
-        // Typewriter Animation
-        function startTyping(text) {
-            let i = 0;
-            const element = document.getElementById("typeText");
-            element.innerHTML = "";
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, 50);
-                } else {
-                    document.getElementById("nextBtn2").style.display = "inline-block";
-                }
-            }
-            type();
-        }
+<div class="card" id="card2">
 
-        // Countdown Logic ( 16 March 12:00 AM)
-        function startCountdown() {
-            const targetDate = new Date("March 16, 2026 00:00:00").getTime();
+<img src="photo2.jpg">
 
-            const interval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
+<h1>Just a Question</h1>
 
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+<p class="typeText" id="text2"></p>
 
-document.getElementById("timer").innerHTML =
-`${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-    
-                document.getElementById("timer").innerHTML = `${hours}h : ${minutes}m : ${seconds}s`;
+<button class="btn" onclick="nextCard(3)">Next 💖</button>
 
-                if (distance < 0) {
-                    clearInterval(interval);
-                    window.location.href = "home.html";
-                }
-            }, 1000);
-        }
+</div>
 
-        // Password Checker
-        function checkPassword() {
-            const input = document.getElementById("passInput").value;
-            if (input === SECRET_PASS) {
-                window.location.href = "home.html";
-            } else {
-                alert("Wrong Secret Code! ❌");
-            }
-        }
-    </script>
+<!-- Card 3 -->
+
+<div class="card" id="card3">
+
+<img src="photo3.jpg">
+
+<h1>Something Special</h1>
+
+<p class="typeText" id="text3"></p>
+
+<button class="btn" onclick="nextCard(4)">Next 🎁</button>
+
+</div>
+
+<!-- Card 4 -->
+
+<div class="card" id="card4">
+
+<img src="photo4.jpg">
+
+<h1>🎂 Countdown</h1>
+
+<p class="typeText" id="text4"></p>
+
+<div class="timer" id="timer">
+Loading...
+</div>
+
+<input type="password" id="passInput" placeholder="Enter Secret Code">
+
+<button class="btn" onclick="checkPassword()">Unlock 🔐</button>
+
+</div>
+
+</div>
+
+<script>
+
+const SECRET_PASS="billa";
+
+/* messages */
+
+const messages={
+text1:"I made something special just for you 💖",
+text2:"Do you know how important you are to me?",
+text3:"Your birthday surprise is almost ready 🎁",
+text4:"Your special day is coming very soon..."
+};
+
+/* typing */
+
+function typeText(id,text){
+
+let i=0;
+
+const el=document.getElementById(id);
+
+el.innerHTML="";
+
+function typing(){
+
+if(i<text.length){
+
+el.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,40);
+
+}
+
+}
+
+typing();
+
+}
+
+/* card change */
+
+function nextCard(num){
+
+document.querySelector(".active-card").classList.remove("active-card");
+
+const next=document.getElementById("card"+num);
+
+next.classList.add("active-card");
+
+const textId="text"+num;
+
+typeText(textId,messages[textId]);
+
+if(num===4){
+startCountdown();
+}
+
+}
+
+/* first typing */
+
+typeText("text1",messages.text1);
+
+/* countdown */
+
+function startCountdown(){
+
+const target=new Date("March 16, 2026 00:00:00").getTime();
+
+const interval=setInterval(()=>{
+
+const now=new Date().getTime();
+
+const distance=target-now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("timer").innerHTML=
+days+"d : "+hours+"h : "+minutes+"m : "+seconds+"s";
+
+if(distance<=0){
+
+clearInterval(interval);
+
+document.getElementById("timer").innerHTML="🎉 Happy Birthday 🎉";
+
+setTimeout(()=>{
+window.location.href="home.html";
+},2000);
+
+}
+
+},1000);
+
+}
+
+/* password */
+
+function checkPassword(){
+
+const input=document.getElementById("passInput").value;
+
+if(input===SECRET_PASS){
+
+window.location.href="home.html";
+
+}else{
+
+alert("Wrong Secret Code ❌");
+
+}
+
+}
+
+</script>
+
 </body>
 </html>
