@@ -1,1 +1,181 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #ffeef2;
+            font-family: 'Poppins', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; overflow: hidden;
+        }
+
+        /* Container for Cards */
+        .perspective-container {
+            perspective: 1000px;
+            width: 90%; max-width: 400px; height: 450px;
+            position: relative;
+        }
+
+        .card {
+            position: absolute; width: 100%; height: 100%;
+            background: white; border-radius: 25px;
+            padding: 30px; text-align: center;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
+            display: none; /* Initially hidden */
+            flex-direction: column; justify-content: center; align-items: center;
+            backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .active-card { display: flex; animation: flipIn 0.8s forwards; }
+
+        @keyframes flipIn {
+            from { transform: rotateY(-180deg); opacity: 0; }
+            to { transform: rotateY(0deg); opacity: 1; }
+        }
+
+        h1 { font-family: 'Pacifico', cursive; color: #d63384; font-size: 2rem; }
+        p { color: #555; font-size: 1.1rem; line-height: 1.6; }
+
+        .btn {
+            background: #ff4d8d; color: white; border: none;
+            padding: 12px 30px; border-radius: 25px;
+            font-weight: 600; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        /* Countdown Style */
+        #timer {
+            font-size: 1.5rem; font-weight: 600; color: #d63384;
+            margin: 20px 0; letter-spacing: 1px;
+        }
+
+        input {
+            padding: 10px; border-radius: 10px; border: 1px solid #ddd;
+            width: 80%; margin-top: 15px; text-align: center;
+        }
+
+        /* Typewriter Cursor */
+        #typeText::after { content: "|"; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="perspective-container">
+        
+        <div class="card active-card" id="card1">
+            <h1>Hey Preeti madam! ✨</h1>
+            <p>I have something very special for you that is waiting....</p>
+            <button class="btn" onclick="nextCard(2)">Are you ready? ✨</button>
+        </div>
+
+        <div class="card" id="card2">
+            <h1>Just a Question...</h1>
+            <p id="typeText"></p>
+            <button class="btn" id="nextBtn2" style="display: none;" onclick="nextCard(3)">Yes, I am! 💖</button>
+        </div>
+
+        <div class="card" id="card3">
+            <h1>Special Moment</h1>
+            <p>Every second spent with you is a blessing. Ready for the surprise?</p>
+            <button class="btn" style="background: #d63384;" onclick="nextCard(4)">Click for Surprise 🎁</button>
+        </div>
+
+        <div class="card" id="card4">
+            <h1>Your Day Starts In...</h1>
+            <div id="timer">Loading...</div>
+            
+            <p style="font-size: 0.9rem;">Wait for the clock to strike 12!</p>
+            <hr style="width: 80%; opacity: 0.2;">
+            
+            <input type="password" id="passInput" placeholder="Enter Secret Code">
+            <button class="btn" style="padding: 8px 20px; font-size: 0.8rem;" onclick="checkPassword()">Unlock Now 🔑</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Password set karein yaha
+        const SECRET_PASS = "billa"; 
+
+        function nextCard(cardNumber) {
+            // Hide current card
+            document.querySelector('.active-card').classList.remove('active-card');
+            
+            // Show next card
+            const next = document.getElementById('card' + cardNumber);
+            next.style.display = 'flex';
+            setTimeout(() => next.classList.add('active-card'), 10);
+
+            // If Card 2, start typing
+            if (cardNumber === 2) {
+                startTyping("Do you know how much you mean to me? And are you excited for your big day?");
+            }
+
+            // If Card 4, start Countdown
+            if (cardNumber === 4) {
+                startCountdown();
+            }
+        }
+
+        // Typewriter Animation
+        function startTyping(text) {
+            let i = 0;
+            const element = document.getElementById("typeText");
+            element.innerHTML = "";
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                } else {
+                    document.getElementById("nextBtn2").style.display = "inline-block";
+                }
+            }
+            type();
+        }
+
+        // Countdown Logic ( 16 March 12:00 AM)
+        function startCountdown() {
+            const targetDate = new Date("March 16, 2026 00:00:00").getTime();
+
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").innerHTML = `${hours}h : ${minutes}m : ${seconds}s`;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    window.location.href = "home.html";
+                }
+            }, 1000);
+        }
+
+        // Password Checker
+        function checkPassword() {
+            const input = document.getElementById("passInput").value;
+            if (input === SECRET_PASS) {
+                window.location.href = "home.html";
+            } else {
+                alert("Wrong Secret Code! ❌");
+            }
+        }
+    </script>
+</body>
+</html>
