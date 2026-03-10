@@ -1,1 +1,222 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday happy Preeti baby (madam ji)💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+        body {
+            margin: 0; padding: 0;
+            background-color: #ffeef2;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        audio { display:none; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; text-align: center; padding: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 50px 20px;
+            border-radius: 30px;
+            position: relative;
+            max-width: 400px; width: 100%;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.1);
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #d63384; font-size: 2.8rem;
+            margin-bottom: 10px; line-height: 1.2;
+        }
+        .hero p { color: #666; font-size: 1.1rem; margin-bottom: 30px; }
+        
+        .btn {
+            background-color: #ff4d8d; color: white;
+            padding: 15px 35px; border-radius: 50px;
+            text-decoration: none; font-weight: 600;
+            display: inline-block; border: none;
+            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
+            transition: 0.3s;
+        }
+        .btn:active { transform: scale(0.95); }
+
+        /* Stickers */
+        .sticker { position: absolute; width: 65px; height: 65px; z-index: 1; }
+        .s1 { top: -25px; left: -10px; transform: rotate(-15deg); }
+        .s2 { top: 10px; right: -20px; transform: rotate(10deg); }
+        .s3 { bottom: 20px; left: -30px; transform: rotate(-20deg); }
+        .s4 { bottom: -20px; right: 10px; transform: rotate(5deg); }
+
+        /* --- GALLERY SECTION --- */
+        .section { padding: 60px 15px; background: #fff; border-radius: 40px 40px 0 0; }
+        .section h2 { 
+            text-align: center; font-family: 'Pacifico', cursive; 
+            color: #d63384; font-size: 2rem; margin-bottom: 30px;
+        }
+        .gallery {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+        .photo-card {
+            border-radius: 15px; overflow: hidden; background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .photo-card:active { transform: scale(0.94); }
+        .photo-card img { width: 100%; height: 180px; object-fit: cover; }
+        .caption { padding: 8px; text-align: center; font-size: 11px; color: #d63384; font-weight: 600; }
+
+        /* --- VIEWER --- */
+        #viewer {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            display: none; justify-content: center; align-items: center; z-index: 2000;
+        }
+        #viewImg { max-width: 90%; max-height: 75%; border-radius: 10px; }
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); color: white; border: none;
+            padding: 20px 15px; font-size: 25px; border-radius: 10px;
+        }
+        .prev-btn { left: 10px; } .next-btn { right: 10px; }
+        .close-btn { position: absolute; top: 30px; right: 25px; color: white; font-size: 35px; }
+
+        /* --- MESSAGE --- */
+        .message-section { padding: 40px 20px; background: #fff; }
+        .msg-box {
+            background: #fff0f5; padding: 30px 20px; border-radius: 25px;
+            text-align: center; border: 2px dashed #ff4d8d;
+        }
+        #typeText { font-size: 15px; line-height: 1.8; color: #555; min-height: 60px; }
+        .reply-area { margin-top: 30px; width: 100%; }
+        textarea {
+            width: 100%; height: 80px; border-radius: 15px; border: 1px solid #ddd;
+            padding: 15px; font-family: inherit; margin-bottom: 10px;
+        }
+
+        /* --- HEARTS --- */
+        .heart { position: fixed; font-size: 20px; z-index: 999; pointer-events: none; animation: float 5s linear infinite; }
+        @keyframes float { 0%{transform:translateY(0); opacity:1} 100%{transform:translateY(-100vh); opacity:0} }
+
+        footer { text-align: center; padding: 30px; font-size: 14px; color: #888; background: #fff; }
+        footer span { font-family: 'Pacifico', cursive; color: #d63384; }
+    </style>
+</head>
+<body>
+
+<audio id="bgMusic" src="Shaky.mp3.mp3" autoplay loop></audio>
+<audio id="voiceWish" src="lv_0_20251209234125.mp3"></audio>
+
+<section class="hero">
+    <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4392/4392461.png" class="sticker s1" alt="anime">
+        <img src="https://cdn-icons-png.flaticon.com/512/4392/4392470.png" class="sticker s2" alt="anime">
+        <img src="https://cdn-icons-png.flaticon.com/512/4392/4392525.png" class="sticker s3" alt="anime">
+        <img src="https://cdn-icons-png.flaticon.com/512/4392/4392511.png" class="sticker s4" alt="anime">
+
+        <h1>Happy Birthday, <br> cutie Preeti</h1>
+        <p>Your presence turns ordinary days into the most beautiful memories 💕</p>
+        <button class="btn" onclick="document.getElementById('photos').scrollIntoView({behavior:'smooth'})">See Memories 📷</button>
+    </div>
+</section>
+
+<section class="section" id="photos">
+    <h2>Special Moments 💖</h2>
+    <div class="gallery">
+        <div class="photo-card" onclick="openViewer(0)"><img src="IMG-20260206-WA0013.jpg"><div class="caption">Cutest 🌸</div></div>
+        <div class="photo-card" onclick="openViewer(1)"><img src="IMG-20260206-WA0012.jpg"><div class="caption">That Smile ✨</div></div>
+        <div class="photo-card" onclick="openViewer(2)"><img src="IMG-20260206-WA0010.jpg"><div class="caption">Sweetest 💖</div></div>
+        <div class="photo-card" onclick="openViewer(3)"><img src="IMG-20260206-WA0009.jpg"><div class="caption">Unforgettable 💕</div></div>
+        <div class="photo-card" onclick="openViewer(4)"><img src="IMG-20260206-WA0008.jpg"><div class="caption">Pure Joy 🌷</div></div>
+        <div class="photo-card" onclick="openViewer(5)"><img src="IMG-20260206-WA0007.jpg"><div class="caption">Perfect ✨</div></div>
+    </div>
+</section>
+
+<div id="viewer">
+    <span class="close-btn" onclick="closeViewer()">&times;</span>
+    <button class="nav-btn prev-btn" onclick="changeImg(-1)">&#10094;</button>
+    <img id="viewImg" src="">
+    <button class="nav-btn next-btn" onclick="changeImg(1)">&#10095;</button>
+</div>
+
+<section class="message-section">
+    <div class="msg-box">
+        <h2 style="font-family:'Pacifico'; color:#d63384;">For You...</h2>
+        <div id="typeText"></div>
+        <button class="btn" onclick="playVoice()" style="margin-top:20px; font-size: 14px;">🎧 Hear Voice Message</button>
+        
+        <div class="reply-area">
+            <textarea id="replyText" placeholder="Write a reply for sezzu billa... 💕"></textarea>
+            <button class="btn" onclick="sendReply()" style="width:100%">Send on WhatsApp 💌</button>
+        </div>
+    </div>
+</section>
+
+<footer style="text-align:center; padding:15px; font-family:sans-serif;">
+  Made 💖 by <span style="font-weight:bold;">Seezzu</span><br><br>
+
+  🌐 Visit my Website:  
+  <a href="https://seezusite.vercel.app" target="_blank" style="color:#ff4d6d; font-weight:bold; text-decoration:none;">
+    seezusite.vercel.app
+  </a>
+  <br><br>
+
+  🚀 Want your own website like this?  
+  <br>
+  <span style="color:#ff4d6d; font-weight:bold;">Buy now from my site!</span>
+</footer>
+
+<script>
+    let currentIdx = 0;
+    const photos = [
+        "IMG-20260206-WA0013.jpg", "IMG-20260206-WA0012.jpg",
+        "IMG-20260206-WA0010.jpg", "IMG-20260206-WA0009.jpg",
+        "IMG-20260206-WA0008.jpg", "IMG-20260206-WA0007.jpg"
+    ];
+
+    function openViewer(i) {
+        currentIdx = i;
+        document.getElementById("viewImg").src = photos[currentIdx];
+        document.getElementById("viewer").style.display = "flex";
+    }
+    function closeViewer() { document.getElementById("viewer").style.display = "none"; }
+    function changeImg(step) {
+        currentIdx = (currentIdx + step + photos.length) % photos.length;
+        document.getElementById("viewImg").src = photos[currentIdx];
+    }
+
+    const msg = "Today is all about celebrating the most amazing person in my world. I've created something magical just for you on your special day...! 🎂✨";
+    let charIdx = 0;
+    function type() {
+        if (charIdx < msg.length) {
+            document.getElementById("typeText").innerHTML += msg[charIdx];
+            charIdx++; setTimeout(type, 50);
+        }
+    }
+    window.onload = () => { setTimeout(type, 1000); };
+
+    function playVoice() { document.getElementById("voiceWish").play(); }
+
+    function sendReply() {
+        const text = document.getElementById("replyText").value || "Thank you for the beautiful surprise! 💕";
+        window.open(`https://wa.me/917723832790?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    setInterval(() => {
+        const h = document.createElement("div");
+        h.className = "heart"; h.innerHTML = "💗";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.bottom = "-20px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 5000);
+    }, 600);
+</script>
+
+</body>
+</html>
