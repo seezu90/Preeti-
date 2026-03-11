@@ -234,7 +234,21 @@ const photos = [
     }
     window.onload = () => { setTimeout(type, 1000); };
 
-    function playVoice() { document.getElementById("voiceWish").play(); }
+    function playVoice(){
+
+const bg = document.getElementById("bgMusic");
+const voice = document.getElementById("voiceWish");
+
+bg.pause();   // background music band
+
+voice.currentTime = 0;
+voice.play();
+
+voice.onended = function(){
+bg.play();   // voice khatam hone par bg music wapas
+};
+
+    }
 
     function sendReply() {
         const text = document.getElementById("replyText").value || "Thank you for the beautiful surprise! 💕";
